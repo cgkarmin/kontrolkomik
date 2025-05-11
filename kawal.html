@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Editor Komik Terpantas</title>
+  <title>Kontrol Komik - Editor</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <style>
-    /* kawal.html - CSS Pop Art (Header Digayakan) - 11 Mei 2025, 07:08 AM WIB */
+    /* kawal.html - CSS Pop Art - 11 Mei 2025, 10:00 AM WIB */
     @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Passion+One:wght@400;700&family=Roboto:wght@400;700&display=swap');
 
     body {
@@ -17,7 +17,7 @@
     }
 
     .comic-header {
-      background-color: #ffd500; /* Kuning Pop Art sebagai latar */
+      background-color: #ffd500; 
       color: #000000; 
       padding: 2rem 1rem; 
       margin-bottom: 1.5rem; 
@@ -32,15 +32,15 @@
       font-family: 'Bangers', cursive; 
       font-size: 3.5rem; 
       letter-spacing: 3px;
-      color: #ff4136; /* Warna Merah Pop Art untuk teks utama */
+      color: #ff4136; 
       -webkit-text-stroke: 2px #000000; 
       text-stroke: 2px #000000; 
       text-shadow: 
-        3px 3px 0px #000000, /* Bayang-bayang hitam solid yang lebih jelas */
+        3px 3px 0px #000000, 
         -1px -1px 0 #ffffff,  
          1px -1px 0 #ffffff,
         -1px  1px 0 #ffffff,
-         1px  1px 0 #ffffff; /* Efek highlight putih di sekeliling teks sebelum bayang hitam */
+         1px  1px 0 #ffffff; 
       position: relative; 
       z-index: 1;
     }
@@ -53,7 +53,6 @@
       z-index: 1;
     }
 
-    /* Gaya lain kekal sama seperti yang telah saya berikan dalam respons "Pop Art" sebelumnya */
     .card-custom {
       border-radius: 0; 
       border: 3px solid #000000; 
@@ -176,6 +175,31 @@
         color: #ffffff;
         border-color: #000000;
     }
+    /* Butang baru untuk tampal JSON penuh */
+    .btn-pop-art-secondary {
+      font-family: 'Bangers', cursive;
+      font-size: 1.2rem;
+      color: #ffffff;
+      background-color: #e60073; /* Magenta/Pink Pop Art */
+      border: 3px solid #000000;
+      border-radius: 0;
+      padding: 0.5rem 1.5rem;
+      letter-spacing: 1px;
+      box-shadow: 3px 3px 0px #000000;
+      transition: all 0.1s ease-in-out;
+      text-decoration: none;
+      display: inline-block; /* atau w-100 jika mahu lebar penuh */
+    }
+    .btn-pop-art-secondary:hover, .btn-pop-art-secondary:focus {
+      background-color: #c00060; 
+      color: #ffffff;
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0px #000000;
+    }
+    .btn-pop-art-secondary:active {
+      transform: translate(1px, 1px);
+      box-shadow: 2px 2px 0px #000000;
+    }
 
     .custom-file-upload {
       border: 3px dashed #005eff; 
@@ -259,7 +283,7 @@
 
     @media (max-width: 576px) { 
       .comic-header h1 {
-        font-size: 2.5rem; /* Saiz disesuaikan untuk mobile */
+        font-size: 2.5rem; 
         -webkit-text-stroke-width: 1.5px;
         text-stroke-width: 1.5px;
         text-shadow: 
@@ -324,7 +348,8 @@
 <body class="p-3 p-md-4">
 
   <header class="comic-header">
-    <h1><i class="bi bi-boombox-fill"></i> EDITOR KOMIK TERPANTAS</h1> <p class="version-info">Fail Disediakan: 11 Mei 2025, 07:08 AM WIB</p>
+    <h1><i class="bi bi-boombox-fill"></i> KONTROL KOMIK</h1> 
+    <p class="version-info">Editor Panel & Penggesa AI - Versi Pop Art!</p>
   </header>
 
   <div class="container-fluid">
@@ -342,7 +367,17 @@
             </label>
             <input type="file" id="uploadJson" accept=".json">
 
-            <h5 class="mt-4 mb-3">Tindakan Umum:</h5>
+            <h5 class="mt-4 mb-3"><i class="bi bi-clipboard2-plus-fill"></i> Tampal Kandungan JSON Penuh</h5>
+            <p class="text-muted small mb-2">Alternatif: Jika sukar membuka fail, salin keseluruhan teks JSON dan tampal di sini.</p>
+            <div class="mb-3">
+                <label for="jsonPasteArea" class="form-label visually-hidden">Tampal keseluruhan teks dari fail .json anda di sini:</label>
+                <textarea class="form-control" id="jsonPasteArea" rows="8" placeholder="[ { &quot;subpanel&quot;: [ { &quot;watak&quot;: &quot;Nama&quot;, ... } ] } ]"></textarea>
+            </div>
+            <button class="btn btn-pop-art-secondary w-100 mb-4" onclick="prosesTampalanJSONPenuh()">
+                <i class="bi bi-file-earmark-arrow-down-fill"></i> Proses Teks JSON Ditampal
+            </button>
+
+            <h5 class="mt-4 mb-3">Tindakan Umum Panel:</h5>
             <div class="d-grid gap-2 action-buttons-group">
               <button class="btn btn-secondary" onclick="salinKeSemua()"><i class="bi bi-front"></i> Salin Panel Pertama Ke Semua</button>
               <button class="btn btn-info text-white" onclick="salinKeNamaSama()"><i class="bi bi-people-fill"></i> Selaraskan Semua Watak</button>
@@ -383,7 +418,7 @@
   </div>
 
   <footer class="text-center mt-5 text-muted small">
-    <p>&copy; <span id="currentYear"></span> Editor Komik Pop Art. Hak Cipta Terpelihara.</p>
+    <p>&copy; <span id="currentYear"></span> Kontrol Komik. Hak Cipta Terpelihara.</p>
   </footer>
 
   <script src="script.js"></script>
