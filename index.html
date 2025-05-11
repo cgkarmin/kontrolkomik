@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontrol Komik - Penggesa Komik Paling Tepat!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        /* index.html - CSS Pop Art - 11 Mei 2025, 08:44 AM WIB */
+        @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Passion+One:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            background-color: #f0f0f0; 
+            overflow-x: hidden; 
+        }
+
+        .pop-art-header {
+            background-color: #ffd500; 
+            color: #000000;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-bottom: 8px solid #000000;
+            box-shadow: 0px 8px 0px #000000; 
+            position: relative;
+            overflow: hidden; 
+        }
+
+        .pop-art-header h1 {
+            font-family: 'Bangers', cursive;
+            font-size: 4.5rem; 
+            letter-spacing: 3px;
+            color: #ff4136; 
+            -webkit-text-stroke: 2.5px #000000;
+            text-stroke: 2.5px #000000;
+            text-shadow: 
+                4px 4px 0px #000000,
+                -2px -2px 0 #ffffff,  
+                 2px -2px 0 #ffffff,
+                -2px  2px 0 #ffffff,
+                 2px  2px 0 #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .pop-art-header .subtitle {
+            font-family: 'Passion One', cursive;
+            font-size: 1.8rem;
+            color: #005eff; 
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 0px #ffffff;
+        }
+        
+        .pop-art-header::before, .pop-art-header::after {
+            content: "";
+            position: absolute;
+            background-repeat: no-repeat;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        .pop-art-header::before { 
+            width: 200px; height: 200px;
+            top: -30px; left: -40px;
+            transform: rotate(-20deg);
+            background: radial-gradient(circle, rgba(0,94,255,0.5) 0%, rgba(0,94,255,0) 70%);
+        }
+        .pop-art-header::after { 
+            width: 150px; height: 150px;
+            bottom: -50px; right: -30px;
+            transform: rotate(15deg);
+            background: radial-gradient(circle, rgba(255,65,54,0.5) 0%, rgba(255,65,54,0) 70%);
+        }
+
+
+        .content-section {
+            padding: 3rem 1.5rem;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: #e60073; 
+            margin-bottom: 1rem;
+            border: 3px solid #000000;
+            padding: 1rem;
+            display: inline-block;
+            box-shadow: 3px 3px 0px #000000;
+        }
+
+        .feature h3 {
+            font-family: 'Passion One', cursive;
+            font-size: 1.5rem;
+            color: #005eff; 
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-section {
+            background-color: #00a99d; 
+            color: #ffffff;
+            padding: 4rem 1.5rem;
+            text-align: center;
+            border-top: 8px solid #000000;
+            border-bottom: 8px solid #000000;
+        }
+
+        .cta-section h2 {
+            font-family: 'Bangers', cursive;
+            font-size: 3rem;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 0px #000000, 3px 3px 0px rgba(0,0,0,0.5);
+        }
+
+        .btn-pop-art {
+            font-family: 'Bangers', cursive;
+            font-size: 1.8rem;
+            color: #000000;
+            background-color: #ffd500; 
+            border: 4px solid #000000;
+            border-radius: 0;
+            padding: 0.75rem 2.5rem;
+            letter-spacing: 2px;
+            box-shadow: 5px 5px 0px #000000;
+            transition: all 0.1s ease-in-out;
+            text-decoration: none;
+            display: inline-block; 
+        }
+        .btn-pop-art:hover, .btn-pop-art:focus {
+            background-color: #ffe040; 
+            color: #000000;
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px #000000;
+        }
+        .btn-pop-art:active {
+            transform: translate(2px, 2px);
+            box-shadow: 3px 3px 0px #000000;
+        }
+
+        .pop-art-image-placeholder {
+            background-color: #cccccc;
+            border: 4px dashed #000000;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: 'Bangers', cursive;
+            font-size: 2rem;
+            color: #555555;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 5px 5px 0px #aaaaaa;
+        }
+        
+        .footer-pop-art {
+            background-color: #333333;
+            color: #ffd500; 
+            padding: 2rem 1rem;
+            text-align: center;
+            font-family: 'Passion One', cursive;
+            border-top: 8px solid #000000;
+        }
+
+        @media (max-width: 768px) {
+            .pop-art-header h1 {
+                font-size: 3rem; 
+            }
+            .pop-art-header .subtitle {
+                font-size: 1.3rem;
+            }
+            .cta-section h2 {
+                font-size: 2.2rem;
+            }
+            .btn-pop-art {
+                font-size: 1.5rem;
+                padding: 0.6rem 1.8rem;
+            }
+            .pop-art-header::before, .pop-art-header::after {
+                width: 100px; height: 100px; 
+            }
+            .pop-art-header::before { top: -20px; left: -25px; }
+            .pop-art-header::after { bottom: -25px; right: -15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="pop-art-header">
+        <h1>Kontrol Komik!</h1>
+        <p class="subtitle">Penggesa Komik Paling Tepat <br class="d-md-none">Untuk AI Visual Anda!</p>
+        <a href="kawal.html" class="btn btn-pop-art mt-3"> <i class="bi bi-lightning-charge-fill"></i> Mula Mengawal Sekarang!
+        </a>
+    </header>
+
+    <section class="content-section text-center">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-8 mx-auto">
+                    <h2 style="font-family: 'Bangers', cursive; font-size: 2.5rem; color: #005eff; text-shadow: 2px 2px 0px #000000;">Ubah Idea Jadi Skrip Visual, Sepantas Kilat!</h2>
+                    <p class="lead" style="font-family: 'Roboto', sans-serif;">Kontrol Komik membantu anda menyusun setiap perincian panel – dari watak, aksi, dialog, hingga penampilan – menjadi data JSON yang sedia digunakan untuk menjana imej komik dengan AI kegemaran anda.</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-4 feature">
+                    <div class="feature-icon"><i class="bi bi-pencil-fill"></i></div>
+                    <h3>Suntingan Terperinci</h3>
+                    <p>Kawal setiap aspek panel anda, termasuk penampilan watak yang spesifik.</p>
+                </div>
+                <div class="col-md-4 mb-4 feature">
+                    <div class="feature-icon"><i class="bi bi-robot"></i></div>
+                    <h3>Sedia Untuk AI</h3>
+                    <p>Eksport ke JSON & TXT – sempurna untuk dijadikan *prompt* AI penjana imej.</p>
+                </div>
+                <div class="col-md-4 mb-4 feature">
+                    <div class="feature-icon"><i class="bi bi-palette-fill"></i></div>
+                    <h3>Gaya Pop Art</h3>
+                    <p>Antaramuka yang menyeronokkan dan inspiratif untuk mencetus kreativiti.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-section bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2 style="font-family: 'Bangers', cursive; font-size: 2.5rem; color: #e60073; text-shadow: 2px 2px 0px #000000;">Dari Teks ke Panel Visual Menakjubkan!</h2>
+                    <p class="lead mt-3">Dengan struktur data yang kemas, anda boleh memberi arahan yang lebih tepat kepada AI seperti DALL-E, Midjourney, atau Stable Diffusion untuk menghasilkan imej panel komik yang anda bayangkan.</p>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Susun atur naratif dengan mudah.</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Cipta konsistensi watak dengan deskripsi penampilan terperinci.</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i> Jana lakaran teks untuk rujukan pantas.</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <div class="pop-art-image-placeholder">
+                        <i class="bi bi-image-alt me-2"></i> (Placeholder: Visual Contoh Panel Komik Anda Di Sini)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Sedia Untuk Mengawal Cerita Komik Anda?</h2>
+            <p class="lead mb-4">Hentikan kerumitan menyusun nota! Mula gunakan Kontrol Komik hari ini dan fokus pada kreativiti anda.</p>
+            <a href="kawal.html" class="btn btn-pop-art"> <i class="bi bi-controller"></i> Buka Editor Kontrol Komik!
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer-pop-art">
+        <p>&copy; <span id="currentYearFooter"></span> Kontrol Komik - Penggesa Komik Paling Tepat. <br class="d-sm-none"> Hak Cipta Terpelihara.</p>
+        <p>Dibangunkan di Batam dengan <i class="bi bi-heart-fill" style="color: #ff4136;"></i>!</p>
+    </footer>
+
+    <script>
+        // index.html - JavaScript - 11 Mei 2025, 08:44 AM WIB
+        document.getElementById("currentYearFooter").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

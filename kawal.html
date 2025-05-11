@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editor Komik Pop Art!</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <style>
+    /* kawal.html - CSS Pop Art (Header Digayakan) - 11 Mei 2025, 07:08 AM WIB */
+    @import url('https://fonts.googleapis.com/css2?family=Bangers&family=Passion+One:wght@400;700&family=Roboto:wght@400;700&display=swap');
+
+    body {
+      background-color: #f0f0f0; 
+      font-family: 'Roboto', sans-serif; 
+      color: #333;
+    }
+
+    .comic-header {
+      background-color: #ffd500; /* Kuning Pop Art sebagai latar */
+      color: #000000; 
+      padding: 2rem 1rem; 
+      margin-bottom: 1.5rem; 
+      border-radius: 0; 
+      border: 4px solid #000000; 
+      text-align: center;
+      box-shadow: 5px 5px 0px #000000; 
+      position: relative;
+      overflow: hidden;
+    }
+    .comic-header h1 {
+      font-family: 'Bangers', cursive; 
+      font-size: 3.5rem; 
+      letter-spacing: 3px;
+      color: #ff4136; /* Warna Merah Pop Art untuk teks utama */
+      -webkit-text-stroke: 2px #000000; 
+      text-stroke: 2px #000000; 
+      text-shadow: 
+        3px 3px 0px #000000, /* Bayang-bayang hitam solid yang lebih jelas */
+        -1px -1px 0 #ffffff,  
+         1px -1px 0 #ffffff,
+        -1px  1px 0 #ffffff,
+         1px  1px 0 #ffffff; /* Efek highlight putih di sekeliling teks sebelum bayang hitam */
+      position: relative; 
+      z-index: 1;
+    }
+    .comic-header .version-info {
+      font-family: 'Passion One', cursive;
+      font-size: 1rem;
+      color: #000000; 
+      opacity: 0.9;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Gaya lain kekal sama seperti yang telah saya berikan dalam respons "Pop Art" sebelumnya */
+    .card-custom {
+      border-radius: 0; 
+      border: 3px solid #000000; 
+      box-shadow: 4px 4px 0px #cccccc; 
+      margin-bottom: 1.5rem; 
+      overflow: hidden;
+    }
+    .card-custom .card-header {
+      background-color: #005eff; 
+      color: #ffffff; 
+      font-family: 'Passion One', cursive; 
+      font-size: 1.3rem;
+      border-bottom: 3px solid #000000;
+      text-transform: uppercase; 
+      letter-spacing: 1px;
+    }
+
+    .btn {
+      font-family: 'Passion One', cursive;
+      font-weight: 700;
+      border-radius: 0; 
+      border-width: 2px;
+      border-style: solid;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.4); 
+      transition: all 0.1s ease-in-out;
+    }
+    .btn:hover, .btn:focus {
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0px rgba(0,0,0,0.6);
+    }
+    .btn:active {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0px rgba(0,0,0,0.8);
+    }
+
+    .btn-secondary { 
+      background-color: #e60073; 
+      border-color: #000000;
+      color: #ffffff;
+    }
+    .btn-secondary:hover {
+      background-color: #c00060;
+      border-color: #000000;
+      color: #ffffff;
+    }
+    .btn-info { 
+      background-color: #00a99d; 
+      border-color: #000000;
+      color: #ffffff;
+    }
+    .btn-info:hover {
+      background-color: #00837c;
+      border-color: #000000;
+      color: #ffffff;
+    }
+    .btn-danger { 
+      background-color: #ff4136; 
+      border-color: #000000;
+      color: #ffffff;
+    }
+    .btn-danger:hover {
+      background-color: #d13026;
+      border-color: #000000;
+      color: #ffffff;
+    }
+
+    #btnToggleAuto {
+      border-color: #000000;
+    }
+    #btnToggleAuto.active { 
+        background-color: #ffd500; 
+        color: #000000 !important; 
+        border-color: #000000;
+    }
+    #btnToggleAuto.inactive { 
+        background-color: #ff4136; 
+        color: #ffffff !important;
+        border-color: #000000;
+    }
+
+    .btn-success { 
+      background-color: #2ecc40; 
+      border-color: #000000;
+      color: #ffffff;
+    }
+    .btn-success:hover {
+      background-color: #25a333;
+      border-color: #000000;
+      color: #ffffff;
+    }
+    .btn-primary { 
+      background-color: #007bff; 
+      border-color: #000000;
+      color: #ffffff;
+    }
+    .btn-primary:hover {
+      background-color: #0062cc;
+      border-color: #000000;
+      color: #ffffff;
+    }
+    .btn-outline-primary { 
+        border-color: #005eff; 
+        color: #005eff;
+        background-color: transparent;
+    }
+    .btn-outline-primary:hover {
+        background-color: #005eff;
+        color: #ffffff;
+        border-color: #000000;
+    }
+    .btn-outline-danger { 
+        border-color: #ff4136; 
+        color: #ff4136;
+        background-color: transparent;
+    }
+    .btn-outline-danger:hover {
+        background-color: #ff4136;
+        color: #ffffff;
+        border-color: #000000;
+    }
+
+    .custom-file-upload {
+      border: 3px dashed #005eff; 
+      padding: 1.5rem;
+      background-color: #ffffff;
+      box-shadow: inset 2px 2px 0px rgba(0,0,0,0.1);
+    }
+    .custom-file-upload:hover {
+      background-color: #e0eaff; 
+    }
+    .custom-file-upload.highlight-drag { 
+      border-color: #ff4136; 
+      background-color: #ffe0e0; 
+      box-shadow: inset 0 0 10px rgba(255, 65, 54, 0.3);
+    }
+    .custom-file-upload i {
+      font-size: 2.5rem; 
+      color: #005eff;
+    }
+    .custom-file-upload.highlight-drag i {
+      color: #ff4136;
+    }
+    .custom-file-upload p {
+      font-family: 'Passion One', cursive;
+      font-size: 1.1rem;
+      color: #333;
+    }
+    #uploadJson {
+      display: none; 
+    }
+
+    #editor {
+      padding: 0; 
+      background-color: transparent; 
+      border: none; 
+      border-radius: 0;
+    }
+    .panel-editor-item { 
+      background-color: #ffffff;
+      border: 3px solid #000000;
+      box-shadow: 3px 3px 0px #dddddd;
+      border-radius: 0;
+    }
+    .panel-editor-item .card-header { 
+       background-color: #f0f0f0 !important; 
+       color: #000000;
+       border-bottom: 3px solid #000000;
+       font-family: 'Passion One', cursive;
+       font-size: 1.1rem;
+    }
+    .panel-editor-item .card-body {
+        padding: 1rem 1.5rem; 
+    }
+    .panel-editor-item label.form-label {
+        font-family: 'Passion One', cursive;
+        font-weight: 700;
+        color: #333;
+        font-size: 1rem;
+    }
+    .form-control, .form-select {
+        border-radius: 0;
+        border: 2px solid #000000;
+        box-shadow: inset 1px 1px 0px rgba(0,0,0,0.1);
+    }
+    .form-control:focus, .form-select:focus {
+        border-color: #005eff; 
+        box-shadow: 0 0 0 0.2rem rgba(0, 94, 255, 0.25), inset 1px 1px 0px rgba(0,0,0,0.1);
+    }
+    fieldset {
+        border: 2px solid #005eff !important; 
+        border-radius: 0 !important;
+        padding: 1rem 1.5rem !important;
+    }
+    fieldset legend {
+        font-family: 'Passion One', cursive;
+        font-weight: 700;
+        color: #005eff !important; 
+        padding: 0 0.5rem !important;
+        font-size: 1.1rem !important;
+    }
+
+    @media (max-width: 576px) { 
+      .comic-header h1 {
+        font-size: 2.5rem; /* Saiz disesuaikan untuk mobile */
+        -webkit-text-stroke-width: 1.5px;
+        text-stroke-width: 1.5px;
+        text-shadow: 
+            2px 2px 0px #000000,
+            -1px -1px 0 #ffffff,  
+             1px -1px 0 #ffffff,
+            -1px  1px 0 #ffffff,
+             1px  1px 0 #ffffff;
+      }
+      .comic-header {
+        padding: 1.5rem 0.5rem;
+      }
+      .card-custom .card-header {
+        font-size: 1.1rem;
+      }
+      .custom-file-upload {
+        padding: 1rem;
+      }
+      .custom-file-upload i {
+        font-size: 2rem;
+      }
+      .panel-editor-item .card-body {
+        padding: 0.75rem; 
+      }
+      .copy-this-character-data-btn { 
+        display: block; 
+        width: 100%;
+        margin-top: 0.5rem; 
+      }
+      .align-items-end .col-md-8, .align-items-end .col-md-4 {
+          flex-basis: 100%; 
+          max-width: 100%;
+      }
+    }
+
+    .alert.fixed-top {
+      z-index: 1055; 
+      box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+      border-radius: 0;
+      border-width: 3px;
+      border-style: solid;
+      border-color: #000000;
+    }
+    .alert-success {
+        background-color: #2ecc40; color: #fff; border-color: #000;
+    }
+    .alert-info {
+        background-color: #00a99d; color: #fff; border-color: #000;
+    }
+    .alert-warning {
+        background-color: #ffd500; color: #000; border-color: #000;
+    }
+    .alert-danger {
+        background-color: #ff4136; color: #fff; border-color: #000;
+    }
+
+    footer {
+        font-family: 'Passion One', cursive;
+    }
+  </style>
+</head>
+<body class="p-3 p-md-4">
+
+  <header class="comic-header">
+    <h1><i class="bi bi-boombox-fill"></i> EDITOR KOMIK POP ART</h1> <p class="version-info">Fail Disediakan: 11 Mei 2025, 07:08 AM WIB</p>
+  </header>
+
+  <div class="container-fluid">
+    <div class="row g-4">
+      <div class="col-lg-4">
+        <div class="card card-custom mb-4">
+          <div class="card-header">
+            <i class="bi bi-gear-fill"></i> Panel Kawalan
+          </div>
+          <div class="card-body">
+            <p class="text-muted small mb-3">Mulakan dengan memuat naik atau menyeret fail JSON komik anda ke kawasan di bawah.</p>
+            <label for="uploadJson" class="custom-file-upload mb-3">
+              <i class="bi bi-cloud-arrow-up-fill"></i>
+              <p>Klik atau Seret Fail JSON ke Sini</p>
+            </label>
+            <input type="file" id="uploadJson" accept=".json">
+
+            <h5 class="mt-4 mb-3">Tindakan Umum:</h5>
+            <div class="d-grid gap-2 action-buttons-group">
+              <button class="btn btn-secondary" onclick="salinKeSemua()"><i class="bi bi-front"></i> Salin Panel Pertama Ke Semua</button>
+              <button class="btn btn-info text-white" onclick="salinKeNamaSama()"><i class="bi bi-people-fill"></i> Selaraskan Semua Watak</button>
+              <button class="btn btn-danger" onclick="padamSemua()"><i class="bi bi-eraser-fill"></i> Kosongkan Semua Medan</button>
+              <button class="btn text-dark" onclick="toggleAutoSalin()" id="btnToggleAuto"> 
+                <i class="bi bi-robot"></i> Auto Salin Dialog: <span id="autoSalinStatus">Hidup</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card card-custom">
+            <div class="card-header">
+              <i class="bi bi-cloud-download-fill"></i> Muat Turun Hasil
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2 download-buttons-group">
+                    <button class="btn btn-success" onclick="downloadJSON()"><i class="bi bi-file-earmark-code-fill"></i> Muat Turun JSON</button>
+                    <button class="btn btn-primary" onclick="downloadTXT()"><i class="bi bi-file-earmark-text-fill"></i> Muat Turun TXT</button>
+                </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="col-lg-8">
+        <div class="card card-custom">
+          <div class="card-header">
+            <i class="bi bi-pencil-square"></i> Ruang Editor Komik
+          </div>
+          <div class="card-body" id="editorAreaBody"> 
+            <p class="text-muted" id="editorPlaceholder">Kandungan komik anda akan dipaparkan di sini selepas fail JSON dimuat naik.</p>
+            <div id="editor" class="mt-3">
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="text-center mt-5 text-muted small">
+    <p>&copy; <span id="currentYear"></span> Editor Komik Pop Art. Hak Cipta Terpelihara.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
