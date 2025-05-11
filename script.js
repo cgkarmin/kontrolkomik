@@ -1,4 +1,4 @@
-// script.js - 11 Mei 2025, 06:35 AM WIB
+// script.js - 11 Mei 2025, 10:00 AM WIB
 document.addEventListener('DOMContentLoaded', () => {
     const actualFileUploadBtn = document.getElementById('uploadJson');
     const customFileUploadLabel = document.querySelector('.custom-file-upload');
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
             actualFileUploadBtn.addEventListener('change', handleFileUploadEvent);
             initializeDragAndDrop(customFileUploadLabel, actualFileUploadBtn); 
         }
-        updateToggleAutoButtonVisuals(); // Panggil untuk set gaya awal butang toggle
+        updateToggleAutoButtonVisuals();
 
         if (editorAreaBody && !document.getElementById('tambahPanelUtamaBtn')) {
             const tambahPanelBtn = document.createElement('button');
@@ -34,9 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
             tambahPanelBtn.className = 'btn btn-outline-primary mt-3 w-100'; 
             tambahPanelBtn.addEventListener('click', tambahPanelUtamaBaru);
             
-            if(editorDiv.nextSibling) { // Letak selepas div#editor jika ada elemen lain
+            if(editorDiv.nextSibling) { 
                 editorAreaBody.insertBefore(tambahPanelBtn, editorDiv.nextSibling);
-            } else { // Jika tidak, letak di akhir card-body
+            } else { 
                 editorAreaBody.appendChild(tambahPanelBtn); 
             }
         }
@@ -499,6 +499,43 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Fungsi untuk Tampal Kandungan JSON Penuh
+    window.prosesTampalanJSONPenuh = () => {
+        const jsonPasteArea = document.getElementById('jsonPasteArea');
+        const jsonString = jsonPasteArea.value;
+
+        if (!jsonString.trim()) {
+            showAlert("Sila tampal kandungan teks JSON dahulu.", "warning");
+            return;
+        }
+
+        try {
+            const parsedData = JSON.parse(jsonString);
+            
+            if (!Array.isArray(parsedData)) {
+                throw new Error("Format JSON tidak sah: Data akar sepatutnya adalah sebuah array.");
+            }
+            parsedData.forEach((item, index) => {
+                if (typeof item !== 'object' || item === null || !item.subpanel || !Array.isArray(item.subpanel) || item.subpanel.length === 0) {
+                    throw new Error(`Format JSON tidak sah pada Panel Utama ${index + 1}: Kunci 'subpanel' mesti ada, berupa array, dan tidak kosong.`);
+                }
+                if (typeof item.subpanel[0] !== 'object' || item.subpanel[0] === null) {
+                     throw new Error(`Format JSON tidak sah pada Panel Utama ${index + 1}: subpanel[0] mesti berupa objek.`);
+                }
+            });
+
+            comicData = parsedData;
+            renderEditor();
+            if (editorPlaceholder) editorPlaceholder.style.display = 'none';
+            showAlert("Teks JSON berjaya diproses dan dimuatkan ke editor.", "success");
+            jsonPasteArea.value = ""; 
+
+        } catch (error) {
+            console.error("Ralat semasa memproses JSON yang ditampal:", error);
+            showAlert(`Ralat memproses JSON yang ditampal: ${error.message}`, "danger");
+        }
+    };
+
     function downloadFile(filename, content, mimeType) {
         const blob = new Blob([content], { type: mimeType });
         const url = URL.createObjectURL(blob);
@@ -517,7 +554,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
         const jsonData = JSON.stringify(comicData, null, 2);
-        downloadFile("komik_diedit.json", jsonData, "application/json");
+        downloadFile("KontrolKomik_output.json", jsonData, "application/json"); 
         showAlert("Fail JSON sedang dimuat turun.", "success");
     };
 
@@ -526,7 +563,10 @@ document.addEventListener('DOMContentLoaded', () => {
             showAlert("Tiada data untuk dimuat turun.", "warning");
             return;
         }
-        let txtContent = "--- LAKARAN KOMIK ---\n\n";
+        let txtContent = `--- LAKARAN DARI KONTROL KOMIK ---\n`;
+        txtContent += `Nama Aplikasi: Kontrol Komik - Penggesa Komik Paling Tepat\n`;
+        txtContent += `Tarikh Eksport: ${new Date().toLocaleString('ms-MY')}\n\n`;
+        
         comicData.forEach((panelUtama, index) => {
             if (!panelUtama.subpanel || !panelUtama.subpanel[0]) return;
             const subP = panelUtama.subpanel[0];
@@ -545,13 +585,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             txtContent += `\n------------------------\n\n`;
         });
-        downloadFile("lakaran_komik_terkini.txt", txtContent, "text/plain");
+        downloadFile("KontrolKomik_lakaran.txt", txtContent, "text/plain"); 
         showAlert("Fail TXT sedang dimuat turun.", "success");
     };
 
     function showAlert(message, type = 'info') {
-        // console.log(`Notifikasi (${type}): ${message}`); 
-        
         const alertContainer = document.body; 
         let alertDiv = document.createElement('div');
         alertDiv.className = `alert alert-${type} alert-dismissible fade show fixed-top m-3`; 
